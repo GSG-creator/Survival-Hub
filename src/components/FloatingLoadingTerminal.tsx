@@ -149,7 +149,7 @@ export const FloatingLoadingTerminal: React.FC = () => {
       ref={containerRef}
       role="region"
       aria-label="Component Initialization Inspector"
-      className="fixed bottom-16 right-4 sm:bottom-6 sm:right-6 z-30 select-none shadow-[0_12px_40px_rgba(0,0,0,0.65)] rounded-xl border border-purple-500/25 bg-[#090611]/90 backdrop-blur-md overflow-hidden flex flex-col transition-[height] duration-200"
+      className="fixed bottom-16 right-4 lg:bottom-10 lg:right-6 z-30 select-none shadow-[0_12px_40px_rgba(0,0,0,0.65)] rounded-xl border border-purple-500/25 bg-[#090611]/90 backdrop-blur-md overflow-hidden flex flex-col transition-[height] duration-200"
       style={{
         width: typeof window !== 'undefined' && window.innerWidth < 640 ? 'calc(100vw - 32px)' : `${dimensions.width}px`,
         height: isMinimized ? '38px' : `${dimensions.height}px`,

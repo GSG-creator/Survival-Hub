@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { PrimaryButton, BackButton } from '../components/ActionButton';
 import { PageLayout } from '../components/PageLayout';
 import { AlertOctagon, ShieldAlert, Sparkles, Terminal } from 'lucide-react';
+import { sfx } from '../utils/soundEffects';
 
 /* 
  * ============================================================================
@@ -46,6 +47,7 @@ export const Page4Shoe: React.FC<Page4ShoeProps> = ({ onNext, onBack }) => {
   }, [currentStepIndex]);
 
   const triggerShoeAnimation = () => {
+    sfx.playWhooshSound();
     setShoeWobble(true);
     setTimeout(() => setShoeWobble(false), 800);
   };

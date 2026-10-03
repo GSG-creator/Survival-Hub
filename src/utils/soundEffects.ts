@@ -2,7 +2,8 @@
  * Tactile Sound Effects Engine
  * 
  * Uses Web Audio API to create gentle, warm, pleasant tactile audio feedback
- * for clicks and hovers. 100% self-contained with no external audio dependencies.
+ * for clicks, hovers, celebratory acceptance, and playful interactions.
+ * 100% self-contained with no external audio dependencies.
  */
 
 class SoundEffects {
@@ -102,6 +103,86 @@ class SoundEffects {
 
       osc.start(now);
       osc.stop(now + 0.035);
+    } catch {
+      // AudioContext policy
+    }
+  }
+
+  /**
+   * Celebratory Chime Sound: Soft, heavenly sparkling arpeggio for when Lithi accepts the apology
+   */
+  public playCelebrationSound() {
+    try {
+      this.init();
+      if (!this.ctx) return;
+
+      if (this.ctx.state === 'suspended') {
+        this.ctx.resume();
+      }
+
+      const notes = [523.25, 659.25, 783.99, 1046.5]; // C5, E5, G5, C6
+      const now = this.ctx.currentTime;
+
+      notes.forEach((freq, i) => {
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        const filter = this.ctx.createBiquadFilter();
+
+        const startTime = now + i * 0.09;
+        const duration = 1.1;
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, startTime);
+
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(2400, startTime);
+
+        gain.gain.setValueAtTime(0.001, startTime);
+        gain.gain.exponentialRampToValueAtTime(0.05, startTime + 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+
+        osc.connect(filter);
+        filter.connect(gain);
+        gain.connect(this.ctx.destination);
+
+        osc.start(startTime);
+        osc.stop(startTime + duration + 0.05);
+      });
+    } catch {
+      // AudioContext policy
+    }
+  }
+
+  /**
+   * Playful Whoosh: Springy whoosh for the shoe wobble interaction
+   */
+  public playWhooshSound() {
+    try {
+      this.init();
+      if (!this.ctx) return;
+
+      if (this.ctx.state === 'suspended') {
+        this.ctx.resume();
+      }
+
+      const now = this.ctx.currentTime;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(180, now);
+      osc.frequency.exponentialRampToValueAtTime(420, now + 0.09);
+      osc.frequency.exponentialRampToValueAtTime(200, now + 0.22);
+
+      gain.gain.setValueAtTime(0.03, now);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.24);
     } catch {
       // AudioContext policy
     }

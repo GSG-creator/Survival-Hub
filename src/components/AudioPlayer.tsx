@@ -27,10 +27,18 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   const [hasInteracted, setHasInteracted] = useState<boolean>(false);
   const userManuallyMuted = useRef<boolean>(false);
 
-  // Auto-play ONLY after the first user interaction anywhere on the website
+  // Auto-play default enabled; starts immediately or on first gesture
   useEffect(() => {
+    // Attempt instant startup immediately
+    ambientPlayer.start().then((started) => {
+      if (started) {
+        setHasInteracted(true);
+        onAutoPlayStarted?.();
+      }
+    }).catch(() => {});
+
     const handleFirstInteraction = async () => {
-      if (hasInteracted || userManuallyMuted.current) return;
+      if (userManuallyMuted.current) return;
       setHasInteracted(true);
 
       // Start the soft ambient player smoothly
@@ -47,11 +55,13 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
     window.addEventListener('click', handleFirstInteraction, { passive: true, once: true });
     window.addEventListener('touchstart', handleFirstInteraction, { passive: true, once: true });
     window.addEventListener('keydown', handleFirstInteraction, { passive: true, once: true });
+    window.addEventListener('pointerdown', handleFirstInteraction, { passive: true, once: true });
 
     return () => {
       window.removeEventListener('click', handleFirstInteraction);
       window.removeEventListener('touchstart', handleFirstInteraction);
       window.removeEventListener('keydown', handleFirstInteraction);
+      window.removeEventListener('pointerdown', handleFirstInteraction);
     };
   }, [hasInteracted, onAutoPlayStarted]);
 
@@ -66,7 +76,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
 
   return (
     <div
-      className="fixed bottom-3 left-3 sm:bottom-4 sm:left-4 z-40 select-none animate-fade-in"
+      className="fixed bottom-14 left-3 lg:hidden z-40 select-none animate-fade-in"
       role="region"
       aria-label="Ambient Soundtrack Controls"
     >

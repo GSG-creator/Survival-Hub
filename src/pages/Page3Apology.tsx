@@ -38,21 +38,21 @@ export const Page3Apology: React.FC<Page3ApologyProps> = ({ onNext, onBack }) =>
             Lithi, I'm genuinely sorry.
           </h2>
 
-          {/* Exact Apology Text Verbatim */}
-          <div className="font-sans text-base sm:text-lg text-slate-200/95 leading-relaxed space-y-4">
-            <p>
+          {/* Exact Apology Text Verbatim with Fluid Clamp Typography (16px to 20px) */}
+          <div className="font-sans apology-letter-content text-[clamp(16px,0.95rem+0.35vw,20px)] leading-[1.78] text-slate-200/95 space-y-4 max-w-full overflow-hidden break-words">
+            <p className="max-w-full break-words">
               I know you were already irritated, and I chose the worst possible moment to tease you and make a joke. I wasn't trying to make things worse, but I understand that I did.
             </p>
-            <p>
+            <p className="max-w-full break-words">
               I should have noticed that you weren't in the mood and given you some space instead of trying to be funny.
             </p>
-            <p className="font-medium text-pink-100">
+            <p className="font-medium text-pink-100 max-w-full break-words">
               I'm not going to make excuses for it. I messed up, and I'm genuinely sorry.
             </p>
-            <p>
+            <p className="max-w-full break-words">
               You didn't deserve to have me make things more annoying when you were already having a rough time.
             </p>
-            <p>
+            <p className="max-w-full break-words">
               I care about you, and I don't want to be someone who adds to your bad moments. I'll try to be more aware of when you need support and when you just need me to not be an idiot.
             </p>
           </div>
