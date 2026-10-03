@@ -146,23 +146,52 @@ export default function App() {
         onToggleAudio={toggleAudio}
       />
 
-      {/* Main Content Area with Animated Page Transition */}
-      <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-6 relative z-10 flex flex-col justify-center">
-        <AnimatePresence mode="wait">
-          {currentPageId === 'boot' && <Page1Boot key="boot" onNext={goNext} />}
-          {currentPageId === 'incident' && (
-            <Page2WhatIDid key="incident" onNext={goNext} onBack={goBack} />
-          )}
-          {currentPageId === 'apology' && (
-            <Page3Apology key="apology" onNext={goNext} onBack={goBack} />
-          )}
-          {currentPageId === 'shoe' && (
-            <Page4Shoe key="shoe" onNext={goNext} onBack={goBack} />
-          )}
-          {currentPageId === 'final' && (
-            <Page5Final key="final" onBack={goBack} />
-          )}
-        </AnimatePresence>
+      {/* Main Content Area with Animated Page Transition & Midnight Terminal Framing */}
+      <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-4 lg:py-5 relative z-10 flex flex-col justify-between items-center min-h-[calc(100vh-8.5rem)] lg:min-h-[calc(100vh-7rem)]">
+        {/* Subtle Ambient Midnight Terminal Header Guideline for Desktop */}
+        <div className="hidden xl:flex items-center justify-between w-full text-[10px] font-mono text-purple-400/20 pointer-events-none select-none px-2 mb-1">
+          <span className="flex items-center gap-1.5">
+            <span className="text-purple-400/40">┌</span>
+            <span>SYS:APOLOGY_WORKSPACE</span>
+          </span>
+          <span className="h-px bg-purple-500/10 flex-1 mx-4" />
+          <span className="flex items-center gap-1.5">
+            <span>TERMINAL_VIEWPORT</span>
+            <span className="text-purple-400/40">┐</span>
+          </span>
+        </div>
+
+        {/* Dynamic Animated Content Container */}
+        <div className="w-full flex-1 flex flex-col justify-center items-center my-auto">
+          <AnimatePresence mode="wait">
+            {currentPageId === 'boot' && <Page1Boot key="boot" onNext={goNext} />}
+            {currentPageId === 'incident' && (
+              <Page2WhatIDid key="incident" onNext={goNext} onBack={goBack} />
+            )}
+            {currentPageId === 'apology' && (
+              <Page3Apology key="apology" onNext={goNext} onBack={goBack} />
+            )}
+            {currentPageId === 'shoe' && (
+              <Page4Shoe key="shoe" onNext={goNext} onBack={goBack} />
+            )}
+            {currentPageId === 'final' && (
+              <Page5Final key="final" onBack={goBack} />
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* Subtle Ambient Midnight Terminal Footer Guideline for Desktop */}
+        <div className="hidden xl:flex items-center justify-between w-full text-[10px] font-mono text-purple-400/20 pointer-events-none select-none px-2 mt-1">
+          <span className="flex items-center gap-1.5">
+            <span className="text-purple-400/40">└</span>
+            <span>BUFFER:GAGAN_TO_LITHI</span>
+          </span>
+          <span className="h-px bg-purple-500/10 flex-1 mx-4" />
+          <span className="flex items-center gap-1.5">
+            <span>SINCERITY:MAX</span>
+            <span className="text-purple-400/40">┘</span>
+          </span>
+        </div>
       </main>
 
       {/* Discreet Persistent AudioPlayer */}

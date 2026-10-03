@@ -154,8 +154,8 @@ export const Page2WhatIDid: React.FC<Page2WhatIDidProps> = ({ onNext, onBack }) 
 
       {/* Navigation Controls */}
       <div className="pt-4 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 border-t border-purple-500/10">
-        <BackButton onClick={onBack} label="BACK TO BOOT" shortcut="←" />
-        <PrimaryButton onClick={onNext} className="w-full sm:w-auto" shortcut="Space or →">
+        <BackButton onClick={onBack} label="BACK TO BOOT" />
+        <PrimaryButton onClick={onNext} className="w-full sm:w-auto">
           READ MY APOLOGY →
         </PrimaryButton>
       </div>

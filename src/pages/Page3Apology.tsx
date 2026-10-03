@@ -150,8 +150,8 @@ export const Page3Apology: React.FC<Page3ApologyProps> = ({ onNext, onBack }) =>
 
       {/* Navigation Controls */}
       <div className="pt-2 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 border-t border-purple-500/10">
-        <BackButton onClick={onBack} label="BACK TO INCIDENT" shortcut="←" />
-        <PrimaryButton onClick={onNext} className="w-full sm:w-auto" shortcut="Space or →">
+        <BackButton onClick={onBack} label="BACK TO INCIDENT" />
+        <PrimaryButton onClick={onNext} className="w-full sm:w-auto">
           CONTINUE →
         </PrimaryButton>
       </div>

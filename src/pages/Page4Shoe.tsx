@@ -172,8 +172,8 @@ export const Page4Shoe: React.FC<Page4ShoeProps> = ({ onNext, onBack }) => {
 
       {/* Navigation Controls */}
       <div className="pt-4 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 border-t border-purple-500/10">
-        <BackButton onClick={onBack} label="BACK TO APOLOGY" shortcut="←" />
-        <PrimaryButton onClick={onNext} className="w-full sm:w-auto" shortcut="Space or →">
+        <BackButton onClick={onBack} label="BACK TO APOLOGY" />
+        <PrimaryButton onClick={onNext} className="w-full sm:w-auto">
           NEXT →
         </PrimaryButton>
       </div>

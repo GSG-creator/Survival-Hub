@@ -53,7 +53,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
         duration: 0.38,
         ease: [0.22, 1, 0.36, 1], // Smooth cubic-bezier deceleration
       }}
-      className={`w-full ${MAX_WIDTH_MAP[maxWidth]} mx-auto py-6 sm:py-10 px-4 flex flex-col relative z-10 ${className}`}
+      className={`w-full ${MAX_WIDTH_MAP[maxWidth]} mx-auto py-3 sm:py-5 lg:py-4 px-2 sm:px-4 flex flex-col relative z-10 ${className}`}
       {...motionProps}
     >
       {children}

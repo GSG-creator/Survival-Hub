@@ -128,7 +128,7 @@ export const Page5Final: React.FC<Page5FinalProps> = ({ onBack }) => {
 
       {/* Navigation Controls: Back button to Page 4 */}
       <div className="w-full pt-8 flex items-center justify-center border-t border-purple-500/10 relative z-10">
-        <BackButton onClick={onBack} label="BACK TO SHOE.EXE" shortcut="←" />
+        <BackButton onClick={onBack} label="BACK TO SHOE.EXE" />
       </div>
     </PageLayout>
   );

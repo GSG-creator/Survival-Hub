@@ -163,7 +163,7 @@ export const Page1Boot: React.FC<Page1BootProps> = ({ onNext }) => {
 
         {/* Button */}
         <div className="pt-2">
-          <PrimaryButton onClick={onNext} className="w-full sm:w-auto px-8" shortcut="Space or →">
+          <PrimaryButton onClick={onNext} className="w-full sm:w-auto px-8">
             START →
           </PrimaryButton>
         </div>
