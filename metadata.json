@@ -1,0 +1,6 @@
+{
+  "name": "Apology.exe",
+  "description": "An extremely unnecessary amount of code for a very necessary apology. From Gagan to Lithi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
